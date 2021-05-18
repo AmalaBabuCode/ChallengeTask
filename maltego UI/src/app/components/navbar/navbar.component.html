@@ -1,0 +1,50 @@
+<!-- <div class="row text-white header-bar">
+    <div class="col-md-12 navHeader">
+        <div >
+            <div class="pt-4 pb-4" *ngIf="showBackBtn">
+                <h3><span class="font-weight-bold text-white position-static pointer">
+                    <a  routerLink="/home">Graph List</a>
+                </span>
+                </h3>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="pt-4 pb-4">
+                <h1><span class="text-center font-weight-bold position-static">{{navText}}</span>
+                </h1>
+            </div>
+        </div>
+        <div>
+            <div class="pt-4 pb-4">   </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<div class="row text-white header-bar">
+    <div class="col-md-12 ">
+        <nav class="navbar navbar-expand-md navbar-dark ">
+            <div class="container-fluid">
+                <a class="navbar-brand abs pt-4 pb-4">
+                    <h1>{{navText}}</h1>
+                </a>
+                <!-- <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+
+                <button *ngIf="showBackBtn" class="navbar-toggler" type="button" (click)="toggleNavbar()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+                    <div *ngIf="showBackBtn" class="nav-item  pt-4 pb-4 pointer" (click)="navigateToGraphList()">
+                        <h3 class="nav-link">Back to Graph List</h3>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- //////////////////////////////////////////////////////////////// -->

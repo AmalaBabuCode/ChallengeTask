@@ -1,0 +1,16 @@
+<div class="row search-bar">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="pt-3 pb-3">
+                    <div class="input-group">
+                        <input type="search" class="form-control rounded p-4" placeholder="Search for a graph..."
+                            #searchInput (keyup)="emitSearch(searchInput.value)"/>
+                        <button type="button" class="btn btn-primary"
+                            (click)="emitSearch(searchInput.value)">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

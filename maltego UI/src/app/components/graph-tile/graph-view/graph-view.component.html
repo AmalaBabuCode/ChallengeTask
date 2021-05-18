@@ -1,0 +1,7 @@
+<div *ngIf='graphData'>
+    <app-navbar [showBackBtn]=true [navText]="navText"></app-navbar>
+
+    <div class="graph">
+        <app-graph [graphData]='graphData.data'></app-graph>
+    </div>
+</div>

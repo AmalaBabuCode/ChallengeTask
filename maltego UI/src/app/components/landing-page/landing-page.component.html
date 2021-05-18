@@ -1,0 +1,43 @@
+<!-- <div class="graph-body"> -->
+<!--cards  -->
+<div class="container">
+    <div class="row ">
+        <!-- <div class="col-md-12 col-lg-10 offset-lg-1"> -->
+        <div class="col-md-12 col-lg-10 offset-lg-2">
+            <div>
+                <!-- loader -->
+                <div *ngIf="isLoading" class="text-center pt-5">
+                    <div class="pt-5">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div>loading</div>
+                </div>
+                <div class="row" *ngIf="!isLoading">
+                    <div class="col-md-12">
+                        <div class="addButton">
+                            <button mat-raised-button color="primary" (click)="createGraph()">Create Graph</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- graph cards -->
+                <div class="row ">
+                    <div class="col-md-12" *ngIf="graphList.length > 0 && !isLoading && !isNoData" fxLayout="row wrap"
+                        fxLayout.xs="column" fxLayoutGap="0px grid">
+                        <div *ngFor="let graph of graphList">
+                            <app-graph-tile [data]=graph (deleteGraphData)="deleteGraph($event)">
+                            </app-graph-tile>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- no data msg -->
+                <div *ngIf="!isLoading && isNoData " class="text-center text-muted pt-5">
+                    <h4 class="font-weight-bold text-secondary pt-5">No Data Found</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- </div> -->

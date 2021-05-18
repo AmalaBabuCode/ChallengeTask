@@ -1,0 +1,19 @@
+.spinner-border {
+    width: 60px; 
+    height: 60px;
+}
+
+.addButton{
+    position: relative;
+    float: right;
+    top: 20px;
+    margin-right: 10%;
+    margin-bottom: 10px;    
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .addButton{
+        margin-right: 15%;
+    }
+}
