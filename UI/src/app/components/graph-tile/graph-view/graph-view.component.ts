@@ -12,19 +12,6 @@ export class GraphViewComponent implements OnInit {
   public graphId;
   public graphData;
   public navText = '';
-  ////////////////////////////////////
-  // private graph!: ForceGraph3DInstance;
-
-  // private nodes: Node[] = [];
-  // private edges: Edge[] = [];
-
-  // private gData = {
-  //   nodes: this.nodes,
-  //   edges: this.edges
-
-  // };
-
-  /////////////////////////////////////
 
   constructor(private route: ActivatedRoute, private router: Router,
               private api: GraphService
@@ -53,6 +40,8 @@ export class GraphViewComponent implements OnInit {
         this.navText = res.name;
         this.graphData = res;
       }
+    },  (err) => {
+      console.log(err, 'Error');
     });
   }
 }

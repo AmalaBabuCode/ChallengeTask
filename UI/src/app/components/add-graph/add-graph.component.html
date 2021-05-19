@@ -1,61 +1,27 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1">
-        <div class="col-12 createForm">
-            <div>
-                <button mat-icon-button class="close-button" mat-dialog-close>
-                    <mat-icon class="close-icon" color="black">close</mat-icon>
-                </button>
-            </div>
-
-            <form [formGroup]="graphForm" (ngSubmit)="onSubmit()">
-                <div formGroupName="userData">
-                    <div class="form-group">
-                        <label for="name">Graph Name : </label>
-                        <input type="text" class="form-control" id="name" formControlName="name">
-                        <span class="help-block"
-                            *ngIf="!graphForm.get('userData.name').valid&&graphForm.get('userData.name').touched">
-                            <!-- <span *ngIf="graphForm.get('userData.name').errors['nameIsForbidden']">Name is
-                                invalid</span> -->
-                            <!-- <span *ngIf="graphForm.get('userData.name').errors['required']">Name is
-                                required</span>
-                        </span>
-                    </div>
-                </div>
-
-                <span class="help-block" *ngIf="!graphForm.valid && graphForm.touched">
-                    please enter valid data
-                </span>
-
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>  -->
-
 <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="closeBtnDiv">
-            <button mat-icon-button class="close-button" mat-dialog-close>
-                <mat-icon class="close-icon" color="black">close</mat-icon>
-            </button>
-        </div>
-        <div class="jumbotron">
-          <h2>Create Graph</h2>
-          <form name="form" [formGroup]="graphForm" (ngSubmit)="graphForm.valid && onSubmit()">
-            <div class="form-group">
-              <label for="name">Graph Name : </label>
-              <input type="text"  class="form-control" formControlName="name" (keyup)="validateForm()" [ngClass]="{'is-invalid':graphForm.get('name').touched && graphForm.get('name').invalid}" required />
-              <div class="invalid-feedback">
-                <div>Graph Name is required</div>
-              </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="close-btn-div">
+        <button mat-icon-button class="close-button" mat-dialog-close>
+          <mat-icon class="close-icon" color="black">close</mat-icon>
+        </button>
+      </div>
+      <div class="jumbotron">
+        <h2>Create Graph</h2>
+        <form name="form" [formGroup]="graphForm" (ngSubmit)="graphForm.valid && onSubmit()">
+          <div class="form-group">
+            <label for="name">Graph Name : </label>
+            <input type="text" class="form-control" formControlName="name" (keyup)="validateForm()"
+              [ngClass]="{'is-invalid':graphForm.get('name').touched && graphForm.get('name').invalid}" required />
+            <div class="invalid-feedback">
+              <div>Graph Name is required</div>
             </div>
-            <div class="form-group">
-              <button class="btn btn-primary"  [disabled]="!graphForm.valid || !isFormValid">Create</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" [disabled]="!graphForm.valid || !isFormValid">Create</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>

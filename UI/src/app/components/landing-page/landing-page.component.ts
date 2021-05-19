@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// import { countryDataModel } from 'src/app/models/graph-data.model';
+import { GraphDataModel } from 'src/app/models/graph-data-model';
 import { GraphService } from 'src/app/services/graph.service';
 import { AddGraphComponent } from '../add-graph/add-graph.component';
 
@@ -14,19 +14,12 @@ export class LandingPageComponent implements OnInit, OnChanges {
 
     @Input() searchInputValue: any;
 
-    public graphList: { id: string; name: string;
-        data: { nodes: { id: string; label: string; }[];
-                edges: { source: string; target: string; }[]; }; }[] = [];
-    public resultList: { id: string; name: string;
-        data: { nodes: { id: string; label: string; }[];
-                edges: { source: string; target: string; }[]; }; }[] = [];
+    public graphList: GraphDataModel[] = [];
+    public resultList: GraphDataModel[] = [];
 
     public isNoData = false;
     public isLoading = false;
     public isSearchValue = false;
-
-
-
     constructor(private api: GraphService,
                 private snackBar: MatSnackBar,
                 public dialog: MatDialog) { }
@@ -37,17 +30,28 @@ export class LandingPageComponent implements OnInit, OnChanges {
 
     getGraphlist() {
         this.isLoading = true;
-
-
         this.api.getAllGraphs().subscribe((res: any) => {
+            this.graphList = [];
             this.isLoading = false;
-            this.graphList = res;
+            this.setGraphList(res);
             if (this.graphList.length) {
                 this.isNoData = false;
             } else {
                 this.isNoData = true;
             }
-        });
+        }, (err) => {
+            console.log(err, 'Error');
+          }
+        );
+    }
+
+    setGraphList(result) {
+        if (result.length) {
+            result.map((graph) => {
+                const currentGraph = new GraphDataModel(graph);
+                this.graphList.push(currentGraph);
+            });
+        }
     }
 
     deleteGraph(id) {
@@ -55,31 +59,32 @@ export class LandingPageComponent implements OnInit, OnChanges {
 
         this.api.deleteGraph(id).subscribe((res: any) => {
             const message = 'Graph deleted successfully';
-            const action = 'OK';
-            this.snackBar.open(message, action, {
-                duration: 2000,
-            });
+            this.openSnackBar(message);
             this.isLoading = false;
             this.graphList = res;
-        });
+        }, (err) => {
+            console.log(err, 'Error');
+          }
+        );
     }
 
-
+    openSnackBar(message) {
+        const action = 'OK';
+        this.snackBar.open(message, action, {
+            duration: 2000,
+        });
+    }
 
     createGraph(): void {
         const dialogRef = this.dialog.open(AddGraphComponent, {
             width: '35%',
             disableClose: true,
-            // data: "hlo"
         });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 const message = 'Graph created successfully';
-                const action = 'OK';
-                this.snackBar.open(message, action, {
-                    duration: 2000,
-                });
+                this.openSnackBar(message);
                 this.getGraphlist();
             }
         });
@@ -91,8 +96,6 @@ export class LandingPageComponent implements OnInit, OnChanges {
             if (this.searchInputValue !== '') {
                 this.isLoading = true;
                 this.isSearchValue = true;
-                this.searchInputValue = this.searchInputValue;
-
                 this.doSearch();
             } else {
                 this.isSearchValue = false;
@@ -107,11 +110,9 @@ export class LandingPageComponent implements OnInit, OnChanges {
         this.isNoData = false;
         if (this.resultList.length > 0) {
             this.isNoData = false;
-            // this.resultList.map
             this.graphList = this.resultList;
         } else {
             this.isNoData = true;
-            // this.graphList = [];
         }
     }
 

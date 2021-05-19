@@ -3,7 +3,7 @@
     height: 60px;
 }
 
-.addButton{
+.add-button{
     position: relative;
     float: right;
     top: 20px;
@@ -13,7 +13,7 @@
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .addButton{
+    .add-button{
         margin-right: 15%;
     }
 }

@@ -1,21 +1,4 @@
-.containerBody{
-    margin-top:20px;
-    background:#dcdcdc;
-    padding: 0px;
-    position: relative;
-    
-}
-.addButton{
-    position: relative;
-    float: right;
-    top: 20px;
-    margin-right: 10%;
-    margin-bottom: 10px;    
-}
-
-
 .graph-body{
-    background-image: linear-gradient(to right, #5ac4ec, #26eec0);
     overflow-x: hidden;
     overflow-y: hidden;
 }

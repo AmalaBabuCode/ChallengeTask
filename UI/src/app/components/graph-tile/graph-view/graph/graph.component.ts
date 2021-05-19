@@ -49,12 +49,13 @@ export class GraphComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
     this.graph = ForceGraph3D()(this.htmlElement);
     this.graph.linkColor((group) => group ? '#ffffff' : '#ff9c91');
     this.graph.linkWidth((group) => group ? 2 : 10);
+    this.graph.linkOpacity(0.5);
     this.graph.d3Force('link').distance(({ group }) => (group ? 20 : 100));
-    this.graph.graphData(this.gData);
+    this.graph.nodeOpacity(0.5);
+    this.graph.nodeAutoColorBy('group');
     this.graph.nodeLabel('label');
     this.graph.nodeThreeObjectExtend(true);
     this.graph.nodeThreeObject(node => {
@@ -62,14 +63,9 @@ export class GraphComponent implements OnInit, AfterViewInit {
       sprite.text = node.label;
       sprite.color = 'White';
       sprite.textHeight = 8;
-      // sprite.backgroundColor = 'false';
-      // sprite.strokeColor = ''
       return sprite;
     });
-    // this.graph.nodeVisibility(true);
-    // this.graph.nodeAutoColorBy('group')
-    this.graph.nodeColor('Blue');
-    this.graph.nodeOpacity(0.5);
+    this.graph.graphData(this.gData);
     this.windowResize();
   }
 

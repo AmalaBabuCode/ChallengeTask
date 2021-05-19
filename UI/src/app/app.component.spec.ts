@@ -14,7 +14,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { Component } from '@angular/core';
 
 describe('AppComponent', () => {
-  // let component = AppComponent;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [

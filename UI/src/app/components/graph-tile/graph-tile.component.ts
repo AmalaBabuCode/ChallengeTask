@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteGraphComponent } from './delete-graph/delete-graph.component';
 import { Router } from '@angular/router';
@@ -21,11 +20,8 @@ export class GraphTileComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  ngOnChanges() {  }
-
   deleteGraph() {
     const dialogRef = this.dialog.open(DeleteGraphComponent, {
-      height: '16%',
       width: '35%',
       disableClose: true,
       data: this.data
@@ -39,7 +35,9 @@ export class GraphTileComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigate( ['graphView'], { queryParams: { id: this.data.id}});
+    if (this.data) {
+      this.router.navigate( ['graphView'], { queryParams: { id: this.data.id}});
+    }
   }
 
 }

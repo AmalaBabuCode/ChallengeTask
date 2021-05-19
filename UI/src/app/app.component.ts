@@ -18,18 +18,4 @@ export class AppComponent implements OnInit {
   callSearch(searchValue: any) {
     this.searchInputValue = searchValue;
   }
-
-  createGraph(): void {
-    const dialogRef = this.dialog.open(AddGraphComponent, {
-      width: '35%',
-      disableClose: true,
-      // data: "hlo"
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-
-      }
-    });
-  }
 }

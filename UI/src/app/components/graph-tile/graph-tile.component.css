@@ -42,33 +42,25 @@
 .borderless td, .borderless th {
     border: none;
 }
-.deleteGraph{
+.delete-graph{
     position: relative;
     float: right;
     cursor: pointer;
     top: -20px;
 }
-
-
 :host {
     display: block;
     padding: 48px;
-  }
-  
+  }  
   section:not(:last-of-type) {
     margin-bottom: 24px;
-  }
-  
-  
-  .example-card {
+  }  
+  .graph-card {
     width: 300px;
-  }
-  
+  }  
   .example-header-image {
-    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
   }
-
   mat-card-actions {
       margin-bottom: 22px!important;
   }

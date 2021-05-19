@@ -1,43 +1,5 @@
-<!-- <div class="card  tile-container shadow-sm  m-5" (click)="navigate()">
-    <div class="tile-image text-white">
-        <div class="text-white bg-image image-text">
-            <h3>{{data.name}}</h3>
-        </div>
-    </div>
-    <div class="card-body card-body-style">
-        <table class="table table-borderless borderless">
-            <thead>
-            </thead>
-            <tbody>
-                <button mat-fab color="primary" class="deleteGraph" (click)="deleteGraph()" aria-label="Delete Graph">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-            </tbody>
-        </table>
-    </div>
-</div> -->
-
-<!-- //////////////////////////////////////////////////////////////////////////////////////// -->
-
-<!-- <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px" (click)="navigate()">
-    <mat-card  fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)" >
-      <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-<!-- <mat-card-title>{{data.name}}</mat-card-title> -->
-<!-- <mat-card-subtitle>{{member.subtitle}}</mat-card-subtitle> -->
-<!-- </mat-card-header> -->
-<!-- <img mat-card-image [src]="member.url" alt="Photo of {{member.title}}"> -->
-<!-- <mat-card-content>
-        <div > -->
-<!-- <app-graph *ngIf='data' [graphData]='data.data'></app-graph> -->
-<!-- </div>
-      </mat-card-content>
-    </mat-card>
-  </div> -->
-<!-- //////////////////////////////////////////////////////////////////////////////////// -->
-<!-- class="darts-dark-theme" -->
-<section >
-    <mat-card *ngIf="data" class="example-card mat-elevation-z5" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)"  >
+<section>
+    <mat-card *ngIf="data" class="graph-card mat-elevation-z5" fxFlex="calc(33%-25px)" fxFlex.sm="calc(50%-25px)">
         <div (click)="navigate()" class="pointer">
             <mat-card-header>
 
@@ -52,7 +14,7 @@
         </div>
 
         <mat-card-actions>
-            <button mat-fab color="primary" class="deleteGraph" (click)="deleteGraph()" aria-label="Delete Graph">
+            <button mat-fab color="primary" class="delete-graph" (click)="deleteGraph()" aria-label="Delete Graph">
                 <mat-icon>delete</mat-icon>
             </button>
         </mat-card-actions>

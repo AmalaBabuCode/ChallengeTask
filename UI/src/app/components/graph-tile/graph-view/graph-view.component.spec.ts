@@ -3,7 +3,7 @@ import { GraphViewComponent } from './graph-view.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GraphService } from 'src/app/services/graph.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
 describe('GraphViewComponent', () => {

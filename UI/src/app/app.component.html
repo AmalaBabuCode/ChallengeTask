@@ -1,8 +1,5 @@
-<!-- class="container" -->
-
 <div class="graph-body" *ngIf="location.pathname != '/graphView'">
   <div class="row">
-    <!-- <div class="col-12"> -->
     <div class="col-md-12 col-sm-12">
       <div class="sticky-top">
         <app-navbar [navText]="navText"></app-navbar>
@@ -11,7 +8,7 @@
           <app-search (searchInputValue)="callSearch($event)"></app-search>
         </div>
       </div>
-      <div >
+      <div>
         <app-landing-page [searchInputValue]="searchInputValue"></app-landing-page>
       </div>
     </div>

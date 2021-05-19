@@ -16,7 +16,6 @@ router.get('/getAllGraphs',(req,res,next)=>{
 });
 
 // fetching sepecific graph
-
 router.get('/getGraph/:gId',(req,res,next)=>{
     let specificGraph;
     gDetail.map((gData, index) => {
@@ -28,7 +27,6 @@ router.get('/getGraph/:gId',(req,res,next)=>{
 });
 
 // delete a graph
-
 router.delete('/deleteGraph/:gId',(req,res,next)=>{
     let specificGraph;
     let finalGdata = [];
@@ -49,7 +47,6 @@ router.delete('/deleteGraph/:gId',(req,res,next)=>{
 });
 
 // create new graph
-
 router.post('/createGraph/:name',(req,res,next)=>{
     let existingIds = gDetail.map(graph => graph.id);
     existingIds.push('grph_0');

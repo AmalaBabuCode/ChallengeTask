@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { GraphService } from 'src/app/services/graph.service';
 
 @Component({
@@ -10,10 +11,12 @@ import { GraphService } from 'src/app/services/graph.service';
 })
 export class AddGraphComponent implements OnInit {
 
-  graphForm: FormGroup;
-  isFormValid = false;
-  graphName;
+  public graphForm: FormGroup;
+  public isFormValid = false;
+  public graphName;
+  public graphCreatedMsg;
   constructor(public dialogRef: MatDialogRef<AddGraphComponent>,
+              private snackBar: MatSnackBar,
               private api: GraphService) { }
 
   ngOnInit(): void {
@@ -22,16 +25,24 @@ export class AddGraphComponent implements OnInit {
     });
   }
 
-
-
   onSubmit() {
     if (this.graphName) {
       this.api.createGraph(this.graphName).subscribe((res: any) => {
+        this.graphCreatedMsg = res;
         this.closeDialog(this.graphName);
       }, (err) => {
         console.log(err, 'Error');
+        this.openSnackBar();
       });
     }
+  }
+
+  openSnackBar() {
+    const message = 'Some error occured. Please restart server';
+    const action = 'OK';
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   validateForm() {
